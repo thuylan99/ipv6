@@ -18,11 +18,11 @@ install_3proxy() {
     cd 3proxy-3proxy-0.8.6
     make -f Makefile.Linux
     mkdir -p /usr/local/etc/3proxy/{bin,logs,stat}
-    sudo cp src/3proxy /usr/local/etc/3proxy/bin/
-    sudo cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
-    sudo chmod +x /etc/init.d/3proxy
-    sudo chkconfig 3proxy on
-    sudo cd $WORKDIR
+    cp src/3proxy /usr/local/etc/3proxy/bin/
+    cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
+    chmod +x /etc/init.d/3proxy
+    chkconfig 3proxy on
+    cd $WORKDIR
 }
 
 gen_3proxy() {
