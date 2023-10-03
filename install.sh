@@ -63,7 +63,8 @@ upload_proxy() {
 }
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
-        echo "$IP6:$port"
+        ipv6_part=$(gen64 $IP6)
+        echo "${ipv6_part}:${port}"
     done
 }
 
