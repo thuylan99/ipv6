@@ -14,13 +14,14 @@ gen_data() {
 }
 
 install_3proxy() {
+    echo "installing 3proxy"
     URL="https://raw.githubusercontent.com/quayvlog/quayvlog/main/3proxy-3proxy-0.8.6.tar.gz"
-    wget -qO- $URL | bsdtar -xvf-
+    wget -qO- $URL | tar xvz
     cd 3proxy-3proxy-0.8.6
     make -f Makefile.Linux
     mkdir -p /usr/local/etc/3proxy/{bin,logs,stat}
     cp src/3proxy /usr/local/etc/3proxy/bin/
-    cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
+    cp scripts/rc.d/proxy.sh /etc/init.d/3proxy
     chmod +x /etc/init.d/3proxy
     chkconfig 3proxy on
     cd $WORKDIR
@@ -67,7 +68,7 @@ install_3proxy
 echo "Working folder = /home/proxy-installer"
 WORKDIR="/home/proxy-installer"
 WORKDATA="${WORKDIR}/data.txt"
-mkdir $WORKDIR && cd $_
+mkdir -p $WORKDIR && cd $WORKDIR
 
 echo "Internal IP = ${IP4}"
 echo "How many proxies do you want to create? Example 500"
